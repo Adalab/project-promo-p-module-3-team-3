@@ -1,15 +1,21 @@
-import "../styles/App.css";
+import "../styles/main.scss";
+import logoAwesome from "../images/logo-awesome.svg";
+import logoAdalab from "../images/logo-adalab.png";
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState("Nombre y Apellidos");
+
+  const handleNameInput = (event) => {
+    setName(event.currentTarget.value);
+    console.log(event.currentTarget.value);
+  };
+
   return (
     <div>
       <header className="header">
         <a href="./index.html">
-          <img
-            className="header__img"
-            src="./assets/images/logo-awesome.svg"
-            alt="Logo"
-          />
+          <img className="header__img" src={logoAwesome} alt="Logo" />
         </a>
       </header>
 
@@ -23,9 +29,7 @@ function App() {
           <article className="profile-card">
             <div className="main-preview-wrapper js_style_preview">
               <div className="profile-card-border">
-                <h2 className="profile-card__name js_name">
-                  Nombre y Apellidos
-                </h2>
+                <h2 className="profile-card__name js_name">{name}</h2>
                 <p className="profile-card__occupation js_ocupation">
                   Profesión
                 </p>
@@ -76,7 +80,8 @@ function App() {
 
             {/* <!------------SECTION COLOURS--------> */}
 
-            <div className="design__container js_design_form collapsed">
+            <div className="design__container js_design_form">
+              {/* collapsed */}
               <p className="design__subtitle">Colores</p>
 
               <div className="design__options">
@@ -147,7 +152,8 @@ function App() {
 
             {/* <!----------------SECTION INPUTS------------------> */}
 
-            <div className="complete__form js_complete_form collapsed js_allInputs">
+            <div className="complete__form js_complete_form js_allInputs">
+              {/* collapsed */}
               <div className="div__complete name js__inputs">
                 <label className="complete__label" htmlFor="name">
                   Nombre completo
@@ -159,6 +165,7 @@ function App() {
                   name="name"
                   placeholder="Ej: Sally Jill"
                   required
+                  onKeyup={handleNameInput}
                 />
                 <p className="error__message"></p>
               </div>
@@ -263,7 +270,8 @@ function App() {
               <i className="js_arrow share__up fa-solid fa-chevron-up toggle_arrow"></i>
             </legend>
 
-            <div className="share__div js_share_form collapsed">
+            <div className="share__div js_share_form ">
+              {/* collapsed */}
               <button
                 type="submit"
                 className="share__button js_create_button js_buttonOrange"
@@ -292,11 +300,7 @@ function App() {
       <footer className="footer">
         <p className="footer__paragraph footer-paragraph">Sine Nomine © 2022</p>
         <a href="https://adalab.es" target="_blank">
-          <img
-            className="footer__img"
-            src="./assets/images/logo-adalab.png"
-            alt="Logo Adalab"
-          />
+          <img className="footer__img" src={logoAdalab} alt="Logo Adalab" />
         </a>
       </footer>
     </div>
