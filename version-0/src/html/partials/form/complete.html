@@ -1,0 +1,108 @@
+<fieldset class="complete">
+  <!------------SECTION LEGEND------------------->
+
+  <legend class="complete__legend js_complete_legend" id="completeLegend">
+    <span><i class="complete__keyboard fa-regular fa-keyboard"></i></span>
+    <h2 class="complete__title">Rellena</h2>
+    <span
+      ><i class="js_arrow complete__up fa-solid fa-chevron-up toggle_arrow"></i
+    ></span>
+  </legend>
+
+  <!----------------SECTION INPUTS------------------>
+
+  <div class="complete__form js_complete_form collapsed js_allInputs">
+    <div class="div__complete name js__inputs">
+      <label class="complete__label" for="name">Nombre completo</label>
+      <input
+        class="complete__input js_name_input"
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Ej: Sally Jill"
+        required
+      />
+      <p class="error__message"></p>
+    </div>
+    <div class="div__complete job js__inputs">
+      <label class="complete__label" for="job">Puesto</label>
+      <input
+        class="complete__input js_ocupation_input"
+        type="text"
+        id="job"
+        name="job"
+        placeholder="Ej: Front-end unicorn"
+        required
+      />
+      <p class="error__message"></p>
+    </div>
+    <label class="complete__label" for="photo">Imagen de perfil</label>
+
+    <!-- PARTE AÑADIR IMAGEN / EN FUTURO USAR LIBRERÍA-->
+
+    <div class="complete__photo">
+      <label class="complete__photo__label" for="photo">Añadir imagen</label>
+      <input
+        class="js__profile-upload-btn hidden"
+        type="file"
+        name=""
+        id="photo"
+        required
+      />
+      <!-- add_image_btn , antes tenía este id-->
+      <div
+        class="complete__photo__square js__profile-preview profile__preview"
+      ></div>
+    </div>
+    <!--------------FIN AÑADIR IMAGEN------------>
+    <div class="div__complete email js__inputs">
+      <label class="complete__label" for="email">Email</label>
+      <input
+        class="complete__input js_input_email"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Ej: sally-hill@gmail.com"
+        required="required"
+        required
+      />
+      <p class="error__message"></p>
+    </div>
+    <div class="div__complete phone js__inputs">
+      <label class="complete__label" for="phone">Teléfono</label>
+      <input
+        class="complete__input js_input_phone"
+        type="tel"
+        id="phone"
+        name="number"
+        placeholder="Ej: 555-55-55-55"
+        required
+      />
+      <p class="error__message"></p>
+    </div>
+    <div class="div__complete linkedin js__inputs">
+      <label class="complete__label" for="linkedin">Linkedin</label>
+      <input
+        class="complete__input js_input_linkedin"
+        type="text"
+        id="linkedin"
+        name="linkedin"
+        placeholder="Ej: linkedin.com/in/sally.hill"
+        required
+      />
+      <p class="error__message"></p>
+    </div>
+    <div class="div__complete github js__inputs">
+      <label class="complete__label" for="github">Github</label>
+      <input
+        class="complete__input js_input_github"
+        type="text"
+        id="github"
+        name="github"
+        placeholder="Ej: @sally-hill"
+        required
+      />
+      <p class="error__message"></p>
+    </div>
+  </div>
+</fieldset>
