@@ -4,11 +4,56 @@ import logoAdalab from "../images/logo-adalab.png";
 import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("Nombre y Apellidos");
+  const [dataCard, setDataCard] = useState({
+    palette: 1,
+    name: "",
+    job: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    github: "",
+    photo: "",
+  });
+  const handleInput = (ev) => {
+    const inputValue = ev.target.value;
+    const inputChanged = ev.target.name;
 
-  const handleNameInput = (event) => {
-    setName(event.currentTarget.value);
-    console.log(event.currentTarget.value);
+    if (inputChanged === "name") {
+      setDataCard({
+        ...dataCard,
+        name: inputValue,
+      });
+    } else if (inputChanged === "job") {
+      setDataCard({
+        ...dataCard,
+        job: inputValue,
+      });
+    } else if (inputChanged === "phone") {
+      setDataCard({
+        ...dataCard,
+        phone: inputValue,
+      });
+    } else if (inputChanged === "email") {
+      setDataCard({
+        ...dataCard,
+        email: inputValue,
+      });
+    } else if (inputChanged === "linkedin") {
+      setDataCard({
+        ...dataCard,
+        linkedin: inputValue,
+      });
+    } else if (inputChanged === "github") {
+      setDataCard({
+        ...dataCard,
+        github: inputValue,
+      });
+    } else if (inputChanged === "palette") {
+      setDataCard({
+        ...dataCard,
+        palette: inputValue,
+      });
+    }
   };
 
   return (
@@ -29,30 +74,44 @@ function App() {
           <article className="profile-card">
             <div className="main-preview-wrapper js_style_preview">
               <div className="profile-card-border">
-                <h2 className="profile-card__name js_name">{name}</h2>
+                <h2 className="profile-card__name js_name">
+                  {dataCard.name || "Nombre y apellidos"}
+                </h2>
                 <p className="profile-card__occupation js_ocupation">
-                  Profesión
+                  {dataCard.job || "Profesión"}
                 </p>
               </div>
               <div className="profile-card__img js__profile-image"></div>
               <ul className="profile-card__social">
                 <li>
-                  <a className="social-links js_icon_phone" href="">
+                  <a
+                    className="social-links js_icon_phone"
+                    href={dataCard.phone}
+                  >
                     <i className="fa-solid fa-mobile-screen-button"></i>
                   </a>
                 </li>
                 <li>
-                  <a className="social-links js_icon_email" href="">
+                  <a
+                    className="social-links js_icon_email"
+                    href={dataCard.email}
+                  >
                     <i className="fa-regular fa-envelope"></i>
                   </a>
                 </li>
                 <li>
-                  <a className="social-links js_icon_linkedin" href="">
+                  <a
+                    className="social-links js_icon_linkedin"
+                    href={dataCard.linkedin}
+                  >
                     <i className="fa-brands fa-linkedin-in"></i>
                   </a>
                 </li>
                 <li>
-                  <a className="social-links js_icon_github" href="">
+                  <a
+                    className="social-links js_icon_github"
+                    href={dataCard.github}
+                  >
                     <i className="fa-brands fa-github-alt"></i>
                   </a>
                 </li>
@@ -92,9 +151,10 @@ function App() {
                     className="design__circle"
                     type="radio"
                     id="firstColour"
-                    name="colourPalette"
-                    value="firstColour"
-                    checked
+                    name="palette"
+                    value="1"
+                    onChange={handleInput}
+                    checked={dataCard.palette === "1"}
                   />
                   <div className="design__colour design__colour--1"></div>
                   <div className="design__colour design__colour--2"></div>
@@ -108,8 +168,10 @@ function App() {
                     className="design__circle"
                     type="radio"
                     id="secondColour"
-                    name="colourPalette"
-                    value="secondColour"
+                    name="palette"
+                    value="2"
+                    onChange={handleInput}
+                    checked={dataCard.palette === "2"}
                   />
                   <div className="design__colour design__colour--4"></div>
                   <div className="design__colour design__colour--5"></div>
@@ -123,8 +185,10 @@ function App() {
                     className="design__circle"
                     type="radio"
                     id="thirdColour"
-                    name="colourPalette"
-                    value="thirdColour"
+                    name="palette"
+                    value="3"
+                    onChange={handleInput}
+                    checked={dataCard.palette === "3"}
                   />
                   <div className="design__colour design__colour--7"></div>
                   <div className="design__colour design__colour--8"></div>
@@ -163,9 +227,10 @@ function App() {
                   type="text"
                   id="name"
                   name="name"
+                  value={dataCard.name}
                   placeholder="Ej: Sally Jill"
                   required
-                  onKeyup={handleNameInput}
+                  onChange={handleInput}
                 />
                 <p className="error__message"></p>
               </div>
@@ -178,8 +243,10 @@ function App() {
                   type="text"
                   id="job"
                   name="job"
+                  value={dataCard.job}
                   placeholder="Ej: Front-end unicorn"
                   required
+                  onChange={handleInput}
                 />
                 <p className="error__message"></p>
               </div>
@@ -196,7 +263,8 @@ function App() {
                 <input
                   className="js__profile-upload-btn hidden"
                   type="file"
-                  name=""
+                  name="photo"
+                  value={dataCard.photo}
                   id="photo"
                   required
                 />
@@ -213,8 +281,10 @@ function App() {
                   type="email"
                   id="email"
                   name="email"
+                  value={dataCard.email}
                   placeholder="Ej: sally-hill@gmail.com"
                   required
+                  onChange={handleInput}
                 />
                 <p className="error__message"></p>
               </div>
@@ -226,9 +296,11 @@ function App() {
                   className="complete__input js_input_phone"
                   type="tel"
                   id="phone"
-                  name="number"
+                  name="phone"
+                  value={dataCard.phone}
                   placeholder="Ej: 555-55-55-55"
                   required
+                  onChange={handleInput}
                 />
                 <p className="error__message"></p>
               </div>
@@ -241,8 +313,10 @@ function App() {
                   type="text"
                   id="linkedin"
                   name="linkedin"
+                  value={dataCard.linkedin}
                   placeholder="Ej: linkedin.com/in/sally.hill"
                   required
+                  onChange={handleInput}
                 />
                 <p className="error__message"></p>
               </div>
@@ -255,8 +329,10 @@ function App() {
                   type="text"
                   id="github"
                   name="github"
+                  value={dataCard.github}
                   placeholder="Ej: @sally-hill"
                   required
+                  onChange={handleInput}
                 />
                 <p className="error__message"></p>
               </div>
