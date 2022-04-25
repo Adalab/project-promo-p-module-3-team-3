@@ -51,9 +51,22 @@ function App() {
     } else if (inputChanged === "palette") {
       setDataCard({
         ...dataCard,
-        palette: inputValue,
+        palette: parseInt(inputValue),
       });
     }
+  };
+  const handleResetButton = (ev) => {
+    ev.preventDefault();
+    setDataCard({
+      palette: 1,
+      name: "",
+      job: "",
+      phone: "",
+      email: "",
+      linkedin: "",
+      github: "",
+      photo: "",
+    });
   };
 
   return (
@@ -67,12 +80,17 @@ function App() {
       <main className='main-create'>
         <section className='main-preview'>
           <div className='main-preview-wrapper'>
-            <button className='main-preview__button js-reset-btn'>
+            <button
+              onClick={handleResetButton}
+              className='main-preview__button js-reset-btn'
+            >
               <i className='fa-solid fa-trash-can'></i>Reset
             </button>
           </div>
           <article className='profile-card'>
-            <div className='main-preview-wrapper js_style_preview'>
+            <div
+              className={`main-preview-wrapper js_style_preview style_00${dataCard.palette}`}
+            >
               <div className='profile-card-border'>
                 <h2 className='profile-card__name js_name'>
                   {dataCard.name || "Nombre y apellidos"}
@@ -154,7 +172,7 @@ function App() {
                     name='palette'
                     value='1'
                     onChange={handleInput}
-                    checked={dataCard.palette === "1"}
+                    checked={dataCard.palette === 1}
                   />
                   <div className='design__colour design__colour--1'></div>
                   <div className='design__colour design__colour--2'></div>
@@ -171,7 +189,7 @@ function App() {
                     name='palette'
                     value='2'
                     onChange={handleInput}
-                    checked={dataCard.palette === "2"}
+                    checked={dataCard.palette === 2}
                   />
                   <div className='design__colour design__colour--4'></div>
                   <div className='design__colour design__colour--5'></div>
@@ -188,7 +206,7 @@ function App() {
                     name='palette'
                     value='3'
                     onChange={handleInput}
-                    checked={dataCard.palette === "3"}
+                    checked={dataCard.palette === 3}
                   />
                   <div className='design__colour design__colour--7'></div>
                   <div className='design__colour design__colour--8'></div>
