@@ -1,54 +1,59 @@
-import "../styles/main.scss";
-import logoAwesome from "../images/logo-awesome.svg";
-import logoAdalab from "../images/logo-adalab.png";
-import { useState } from "react";
+import '../styles/main.scss';
+import logoAwesome from '../images/logo-awesome.svg';
+import logoAdalab from '../images/logo-adalab.png';
+import { useState } from 'react';
+import dataApi from '../services/fetch';
+
 
 function App() {
+  const [apiData, setApiData] = useState({});
+
+
   const [dataCard, setDataCard] = useState({
     palette: 1,
-    name: "",
-    job: "",
-    phone: "",
-    email: "",
-    linkedin: "",
-    github: "",
-    photo: "",
+    name: '',
+    job: '',
+    phone: '',
+    email: '',
+    linkedin: '',
+    github: '',
+    photo: '',
   });
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputChanged = ev.target.name;
 
-    if (inputChanged === "name") {
+    if (inputChanged === 'name') {
       setDataCard({
         ...dataCard,
         name: inputValue,
       });
-    } else if (inputChanged === "job") {
+    } else if (inputChanged === 'job') {
       setDataCard({
         ...dataCard,
         job: inputValue,
       });
-    } else if (inputChanged === "phone") {
+    } else if (inputChanged === 'phone') {
       setDataCard({
         ...dataCard,
         phone: inputValue,
       });
-    } else if (inputChanged === "email") {
+    } else if (inputChanged === 'email') {
       setDataCard({
         ...dataCard,
         email: inputValue,
       });
-    } else if (inputChanged === "linkedin") {
+    } else if (inputChanged === 'linkedin') {
       setDataCard({
         ...dataCard,
         linkedin: inputValue,
       });
-    } else if (inputChanged === "github") {
+    } else if (inputChanged === 'github') {
       setDataCard({
         ...dataCard,
         github: inputValue,
       });
-    } else if (inputChanged === "palette") {
+    } else if (inputChanged === 'palette') {
       setDataCard({
         ...dataCard,
         palette: parseInt(inputValue),
@@ -59,13 +64,20 @@ function App() {
     ev.preventDefault();
     setDataCard({
       palette: 1,
-      name: "",
-      job: "",
-      phone: "",
-      email: "",
-      linkedin: "",
-      github: "",
-      photo: "",
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: '',
+    });
+  };
+
+  const handleClickCreateCard = (ev) => {
+    ev.preventDefault();
+    dataApi(dataCard).then((info) => {
+      setApiData(info)
     });
   };
 
@@ -93,10 +105,10 @@ function App() {
             >
               <div className='profile-card-border'>
                 <h2 className='profile-card__name js_name'>
-                  {dataCard.name || "Nombre y apellidos"}
+                  {dataCard.name || 'Nombre y apellidos'}
                 </h2>
                 <p className='profile-card__occupation js_ocupation'>
-                  {dataCard.job || "Profesión"}
+                  {dataCard.job || 'Profesión'}
                 </p>
               </div>
               <div className='profile-card__img js__profile-image'></div>
@@ -367,6 +379,7 @@ function App() {
             <div className='share__div js_share_form '>
               {/* collapsed */}
               <button
+                onClick={handleClickCreateCard}
                 type='submit'
                 className='share__button js_create_button js_buttonOrange'
               >
@@ -378,7 +391,11 @@ function App() {
                 {/* <!-- En este h3, sale la frase de creada tarjeta o error --> */}
                 <h3 className='js_share__title--done share__title--done'></h3>
                 {/* <!-- Aquí va la url creada --> */}
-                <a target='blank' className='share__link js_url' href=''></a>
+                <a target='blank' className='share__link js_url' href=''>
+                  {apiData.success ? apiData.cardURL : ''}
+                </a>
+                <p>{apiData.success === false ? apiData.error : ''}
+                </p>
                 <button
                   type='button'
                   className='share__button--in js_shareButtonTwitter'
