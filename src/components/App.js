@@ -64,8 +64,7 @@ function App() {
   };
 
   // función reset
-  const handleResetButton = (ev) => {
-    ev.preventDefault();
+  const handleResetButton = () => {
     setDataCard({
       palette: 1,
       name: '',
@@ -97,6 +96,7 @@ function App() {
       handleInput={handleInput} 
       handleClickCreateCard={handleClickCreateCard}
       apiData={apiData}
+      handleResetButton={handleResetButton}
       />
 
       <footer className='footer'>

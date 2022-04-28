@@ -1,10 +1,11 @@
 
-function CardPreview () {
+function CardPreview (props) {
+
   return (
     <section className='main-preview'>
     <div className='main-preview-wrapper'>
       <button
-        onClick={handleResetButton}
+        onClick={props.handleResetButton}
         className='main-preview__button js-reset-btn'
       >
         <i className='fa-solid fa-trash-can'></i>Reset
@@ -12,14 +13,14 @@ function CardPreview () {
     </div>
     <article className='profile-card'>
       <div
-        className={`main-preview-wrapper js_style_preview style_00${dataCard.palette}`}
+        className={`main-preview-wrapper js_style_preview style_00${props.dataCard.palette}`}
       >
         <div className='profile-card-border'>
           <h2 className='profile-card__name js_name'>
-            {dataCard.name || 'Nombre y apellidos'}
+            {props.dataCard.name || 'Nombre y apellidos'}
           </h2>
           <p className='profile-card__occupation js_ocupation'>
-            {dataCard.job || 'Profesión'}
+            {props.dataCard.job || 'Profesión'}
           </p>
         </div>
         <div className='profile-card__img js__profile-image'></div>
@@ -28,7 +29,7 @@ function CardPreview () {
             <a
               className='social-links js_icon_phone'
               title='Este es mi número de teléfono'
-              href={`tel: ${dataCard.phone}`}
+              href={`tel: ${props.dataCard.phone}`}
             >
               <i className='fa-solid fa-mobile-screen-button'></i>
             </a>
@@ -37,7 +38,7 @@ function CardPreview () {
             <a
               className='social-links js_icon_email'
               title='Envíame un email'
-              href={`mailto: ${dataCard.email}`}
+              href={`mailto: ${props.dataCard.email}`}
             >
               <i className='fa-regular fa-envelope'></i>
             </a>
@@ -46,7 +47,7 @@ function CardPreview () {
             <a
               className='social-links js_icon_linkedin'
               title='Sigueme en LinkedIn'
-              href={`https://www.linkedin.com/in/${dataCard.linkedin}`}
+              href={`https://www.linkedin.com/in/${props.dataCard.linkedin}`}
             >
               <i className='fa-brands fa-linkedin-in'></i>
             </a>
@@ -55,7 +56,7 @@ function CardPreview () {
             <a
               className='social-links js_icon_github'
               title='Sigueme en GitHub'
-              href={`https://github.com/${dataCard.github}`}
+              href={`https://github.com/${props.dataCard.github}`}
             >
               <i className='fa-brands fa-github-alt'></i>
             </a>
