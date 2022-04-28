@@ -13,7 +13,6 @@ function App() {
   const [arrowC, setArrowC] = useState('toggle_arrow');
   const [arrowS, setArrowS] = useState('toggle_arrow');
 
-
   const [apiData, setApiData] = useState({});
 
   const [dataCard, setDataCard] = useState({
@@ -26,6 +25,8 @@ function App() {
     github: '',
     photo: '',
   });
+
+  // función actualizar valores de los inputs
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputChanged = ev.target.name;
@@ -67,6 +68,8 @@ function App() {
       });
     }
   };
+
+  // función reset
   const handleResetButton = (ev) => {
     ev.preventDefault();
     setDataCard({
@@ -88,6 +91,7 @@ function App() {
     });
   };
 
+  // colapsar las secciones
   const handleLegendClick = (ev) => {
     console.log(ev.currentTarget.id);
     let legendID = ev.currentTarget.id;
@@ -97,37 +101,36 @@ function App() {
       setCollapsedClassD('');
       setCollapsedClassC('collapsed');
       setCollapsedClassS('collapsed');
-      setArrowD('')
-      setArrowC('toggle_arrow')
-      setArrowS('toggle_arrow')
-      if (collapsedClassD === ''){
-        setCollapsedClassD('collapsed')
-        setArrowD('toggle_arrow')
+      setArrowD('');
+      setArrowC('toggle_arrow');
+      setArrowS('toggle_arrow');
+      if (collapsedClassD === '') {
+        setCollapsedClassD('collapsed');
+        setArrowD('toggle_arrow');
       }
     } else if (legendID === 'completeLegend') {
       console.log('soy la segunda igualdad y me cumplo');
       setCollapsedClassD('collapsed');
       setCollapsedClassC('');
       setCollapsedClassS('collapsed');
-      setArrowD('toggle_arrow')
-      setArrowC('')
-      setArrowS('toggle_arrow')
-      if (collapsedClassC === ''){
-        setCollapsedClassC('collapsed')
-        setArrowC('toggle_arrow')
+      setArrowD('toggle_arrow');
+      setArrowC('');
+      setArrowS('toggle_arrow');
+      if (collapsedClassC === '') {
+        setCollapsedClassC('collapsed');
+        setArrowC('toggle_arrow');
       }
-
     } else if (legendID === 'shareLegend') {
       console.log('soy la tercera igualdad y me cumplo');
       setCollapsedClassD('collapsed');
       setCollapsedClassC('collapsed');
       setCollapsedClassS('');
-      setArrowD('toggle_arrow')
-      setArrowC('toggle_arrow')
-      setArrowS('')
-      if (collapsedClassS === ''){
-        setCollapsedClassS('collapsed')
-        setArrowS('toggle_arrow')
+      setArrowD('toggle_arrow');
+      setArrowC('toggle_arrow');
+      setArrowS('');
+      if (collapsedClassS === '') {
+        setCollapsedClassS('collapsed');
+        setArrowS('toggle_arrow');
       }
     }
   };
@@ -167,7 +170,8 @@ function App() {
                 <li>
                   <a
                     className='social-links js_icon_phone'
-                    href={dataCard.phone}
+                    title='Este es mi número de teléfono'
+                    href={`tel: ${dataCard.phone}`}
                   >
                     <i className='fa-solid fa-mobile-screen-button'></i>
                   </a>
@@ -175,7 +179,8 @@ function App() {
                 <li>
                   <a
                     className='social-links js_icon_email'
-                    href={dataCard.email}
+                    title='Envíame un email'
+                    href={`mailto: ${dataCard.email}`}
                   >
                     <i className='fa-regular fa-envelope'></i>
                   </a>
@@ -183,7 +188,8 @@ function App() {
                 <li>
                   <a
                     className='social-links js_icon_linkedin'
-                    href={dataCard.linkedin}
+                    title='Sigueme en LinkedIn'
+                    href={`https://www.linkedin.com/in/${dataCard.linkedin}`}
                   >
                     <i className='fa-brands fa-linkedin-in'></i>
                   </a>
@@ -191,7 +197,8 @@ function App() {
                 <li>
                   <a
                     className='social-links js_icon_github'
-                    href={dataCard.github}
+                    title='Sigueme en GitHub'
+                    href={`https://github.com/${dataCard.github}`}
                   >
                     <i className='fa-brands fa-github-alt'></i>
                   </a>
@@ -215,7 +222,9 @@ function App() {
               </span>
               <h2 className='design__title'>Diseña</h2>
               <span>
-                <i className={`js_arrow design__up fa-solid fa-chevron-up ${arrowD}`}></i>
+                <i
+                  className={`js_arrow design__up fa-solid fa-chevron-up ${arrowD}`}
+                ></i>
               </span>
             </legend>
 
@@ -294,7 +303,9 @@ function App() {
               </span>
               <h2 className='complete__title'>Rellena</h2>
               <span>
-                <i className={`js_arrow design__up fa-solid fa-chevron-up ${arrowC}`}></i>
+                <i
+                  className={`js_arrow design__up fa-solid fa-chevron-up ${arrowC}`}
+                ></i>
               </span>
             </legend>
 
@@ -399,7 +410,7 @@ function App() {
                   id='linkedin'
                   name='linkedin'
                   value={dataCard.linkedin}
-                  placeholder='Ej: linkedin.com/in/sally.hill'
+                  placeholder='Ej: sally-hill'
                   required
                   onChange={handleInput}
                 />
@@ -415,7 +426,7 @@ function App() {
                   id='github'
                   name='github'
                   value={dataCard.github}
-                  placeholder='Ej: @sally-hill'
+                  placeholder='Ej: sally-hill'
                   required
                   onChange={handleInput}
                 />
@@ -432,7 +443,9 @@ function App() {
             >
               <i className='share__nodes fa-solid fa-share-nodes'></i>
               <h2 className='share__title'>Comparte</h2>
-              <i className={`js_arrow design__up fa-solid fa-chevron-up ${arrowS}`}></i>
+              <i
+                className={`js_arrow design__up fa-solid fa-chevron-up ${arrowS}`}
+              ></i>
             </legend>
 
             <div
