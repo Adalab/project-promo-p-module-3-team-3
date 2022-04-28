@@ -73,10 +73,21 @@ function Card(props) {
         />
         <Complete 
         dataCard={props.dataCard} 
-        handleInput={props.handleInput} />
+        handleInput={props.handleInput} 
+        
+        handleLegendClick={handleLegendClick}
+        collapsedClassC={collapsedClassC}
+        arrowC={arrowC}
+        />
         <Share 
          dataCard={props.datacard} 
-         handleClickCreateCard={props.handleClickCreateCard}/>
+         handleClickCreateCard={props.handleClickCreateCard}
+
+         collapsedClassS={collapsedClassS}
+         arrowS={arrowS}
+         />
+
+         
       </form>
     </main>
   );
