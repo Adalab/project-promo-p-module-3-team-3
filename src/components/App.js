@@ -78,8 +78,7 @@ function App() {
     });
   };
 
-  const handleClickCreateCard = (ev) => {
-    ev.preventDefault();
+  const handleClickCreateCard = () => {
     dataApi(dataCard).then((info) => {
       setApiData(info);
     });
@@ -97,6 +96,7 @@ function App() {
       dataCard={dataCard}
       handleInput={handleInput} 
       handleClickCreateCard={handleClickCreateCard}
+      apiData={apiData}
       />
 
       <footer className='footer'>

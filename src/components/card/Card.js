@@ -82,7 +82,9 @@ function Card(props) {
         <Share 
          dataCard={props.datacard} 
          handleClickCreateCard={props.handleClickCreateCard}
+         apiData={props.apiData}
 
+         handleLegendClick={handleLegendClick}
          collapsedClassS={collapsedClassS}
          arrowS={arrowS}
          />
