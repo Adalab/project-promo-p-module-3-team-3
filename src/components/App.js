@@ -4,10 +4,17 @@ import logoAdalab from '../images/logo-adalab.png';
 import { useState } from 'react';
 import dataApi from '../services/fetch';
 
-
 function App() {
-  const [apiData, setApiData] = useState({});
+  const [collapsedClassD, setCollapsedClassD] = useState('');
+  const [collapsedClassC, setCollapsedClassC] = useState('collapsed');
+  const [collapsedClassS, setCollapsedClassS] = useState('collapsed');
 
+  const [arrowD, setArrowD] = useState('');
+  const [arrowC, setArrowC] = useState('toggle_arrow');
+  const [arrowS, setArrowS] = useState('toggle_arrow');
+
+
+  const [apiData, setApiData] = useState({});
 
   const [dataCard, setDataCard] = useState({
     palette: 1,
@@ -77,8 +84,52 @@ function App() {
   const handleClickCreateCard = (ev) => {
     ev.preventDefault();
     dataApi(dataCard).then((info) => {
-      setApiData(info)
+      setApiData(info);
     });
+  };
+
+  const handleLegendClick = (ev) => {
+    console.log(ev.currentTarget.id);
+    let legendID = ev.currentTarget.id;
+
+    if (legendID === 'designLegend') {
+      console.log('soy la primera igualdad y me cumplo');
+      setCollapsedClassD('');
+      setCollapsedClassC('collapsed');
+      setCollapsedClassS('collapsed');
+      setArrowD('')
+      setArrowC('toggle_arrow')
+      setArrowS('toggle_arrow')
+      if (collapsedClassD === ''){
+        setCollapsedClassD('collapsed')
+        setArrowD('toggle_arrow')
+      }
+    } else if (legendID === 'completeLegend') {
+      console.log('soy la segunda igualdad y me cumplo');
+      setCollapsedClassD('collapsed');
+      setCollapsedClassC('');
+      setCollapsedClassS('collapsed');
+      setArrowD('toggle_arrow')
+      setArrowC('')
+      setArrowS('toggle_arrow')
+      if (collapsedClassC === ''){
+        setCollapsedClassC('collapsed')
+        setArrowC('toggle_arrow')
+      }
+
+    } else if (legendID === 'shareLegend') {
+      console.log('soy la tercera igualdad y me cumplo');
+      setCollapsedClassD('collapsed');
+      setCollapsedClassC('collapsed');
+      setCollapsedClassS('');
+      setArrowD('toggle_arrow')
+      setArrowC('toggle_arrow')
+      setArrowS('')
+      if (collapsedClassS === ''){
+        setCollapsedClassS('collapsed')
+        setArrowS('toggle_arrow')
+      }
+    }
   };
 
   return (
@@ -157,20 +208,22 @@ function App() {
             <legend
               className='design__legend js_design_legend'
               id='designLegend'
+              onClick={handleLegendClick}
             >
               <span>
                 <i className='fa-regular fa-object-ungroup design__square'></i>
               </span>
               <h2 className='design__title'>Diseña</h2>
               <span>
-                <i className='js_arrow design__up fa-solid fa-chevron-up toggle_arrow'></i>
+                <i className={`js_arrow design__up fa-solid fa-chevron-up ${arrowD}`}></i>
               </span>
             </legend>
 
             {/* <!------------SECTION COLOURS--------> */}
 
-            <div className='design__container js_design_form'>
-              {/* collapsed */}
+            <div
+              className={`design__container js_design_form ${collapsedClassD}`}
+            >
               <p className='design__subtitle'>Colores</p>
 
               <div className='design__options'>
@@ -234,20 +287,22 @@ function App() {
             <legend
               className='complete__legend js_complete_legend'
               id='completeLegend'
+              onClick={handleLegendClick}
             >
               <span>
                 <i className='complete__keyboard fa-regular fa-keyboard'></i>
               </span>
               <h2 className='complete__title'>Rellena</h2>
               <span>
-                <i className='js_arrow complete__up fa-solid fa-chevron-up toggle_arrow'></i>
+                <i className={`js_arrow design__up fa-solid fa-chevron-up ${arrowC}`}></i>
               </span>
             </legend>
 
             {/* <!----------------SECTION INPUTS------------------> */}
 
-            <div className='complete__form js_complete_form js_allInputs'>
-              {/* collapsed */}
+            <div
+              className={`design__container js_design_form ${collapsedClassC}`}
+            >
               <div className='div__complete name js__inputs'>
                 <label className='complete__label' htmlFor='name'>
                   Nombre completo
@@ -370,14 +425,19 @@ function App() {
           </fieldset>
 
           <fieldset className='share'>
-            <legend className='share__legend js_share_legend' id='shareLegend'>
+            <legend
+              className='share__legend js_share_legend'
+              id='shareLegend'
+              onClick={handleLegendClick}
+            >
               <i className='share__nodes fa-solid fa-share-nodes'></i>
               <h2 className='share__title'>Comparte</h2>
-              <i className='js_arrow share__up fa-solid fa-chevron-up toggle_arrow'></i>
+              <i className={`js_arrow design__up fa-solid fa-chevron-up ${arrowS}`}></i>
             </legend>
 
-            <div className='share__div js_share_form '>
-              {/* collapsed */}
+            <div
+              className={`design__container js_design_form ${collapsedClassS}`}
+            >
               <button
                 onClick={handleClickCreateCard}
                 type='submit'
@@ -394,8 +454,7 @@ function App() {
                 <a target='blank' className='share__link js_url' href=''>
                   {apiData.success ? apiData.cardURL : ''}
                 </a>
-                <p>{apiData.success === false ? apiData.error : ''}
-                </p>
+                <p>{apiData.success === false ? apiData.error : ''}</p>
                 <button
                   type='button'
                   className='share__button--in js_shareButtonTwitter'

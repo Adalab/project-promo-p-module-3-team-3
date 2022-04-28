@@ -49,7 +49,7 @@
 
   &__container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 10rem;
   }
 
@@ -63,6 +63,7 @@
   }
 
   &__options {
+    margin-left: 160rem;
     &--colour {
       display: flex;
       flex-direction: row;
