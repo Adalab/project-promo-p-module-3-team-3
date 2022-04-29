@@ -1,61 +1,67 @@
-import '../styles/main.scss';
-import logoAwesome from '../images/logo-awesome.svg';
-import logoAdalab from '../images/logo-adalab.png';
-import { useState } from 'react';
-import dataApi from '../services/fetch';
-import Card from './card/Card';
+import "../styles/main.scss";
+import logoAwesome from "../images/logo-awesome.svg";
+import logoAdalab from "../images/logo-adalab.png";
+import { useState } from "react";
+import dataApi from "../services/fetch";
+import Card from "./card/Card";
+import React from 'react';
+
 
 function App() {
-
   const [apiData, setApiData] = useState({});
+  const [avatar, setAvatar] = useState('');
+ 
 
   const [dataCard, setDataCard] = useState({
     palette: 1,
-    name: '',
-    job: '',
-    phone: '',
-    email: '',
-    linkedin: '',
-    github: '',
-    photo: '',
+    name: "",
+    job: "",
+    phone: "",
+    email: "",
+    linkedin: "",
+    github: "",
+    photo: "",
   });
+
+  const updateAvatar = (avatar) => {
+    setAvatar(avatar);
 
   // función actualizar valores de los inputs
   const handleInput = (data) => {
     const inputValue = data.value;
     const inputChanged = data.name;
 
-    if (inputChanged === 'name') {
+    if (inputChanged === "name") {
       setDataCard({
         ...dataCard,
         name: inputValue,
       });
-    } else if (inputChanged === 'job') {
+    } else if (inputChanged === "job") {
       setDataCard({
         ...dataCard,
         job: inputValue,
       });
-    } else if (inputChanged === 'phone') {
+    } else if (inputChanged === "phone") {
       setDataCard({
         ...dataCard,
         phone: inputValue,
       });
-    } else if (inputChanged === 'email') {
+    } else if (inputChanged === "email") {
       setDataCard({
         ...dataCard,
         email: inputValue,
       });
-    } else if (inputChanged === 'linkedin') {
+    } else if (inputChanged === "linkedin") {
       setDataCard({
         ...dataCard,
         linkedin: inputValue,
       });
-    } else if (inputChanged === 'github') {
+    } else if (inputChanged === "github") {
       setDataCard({
         ...dataCard,
         github: inputValue,
       });
-    } else if (inputChanged === 'palette') {
+    } else if (inputChanged === "palette") {
       setDataCard({
         ...dataCard,
         palette: parseInt(inputValue),
@@ -67,13 +73,13 @@ function App() {
   const handleResetButton = () => {
     setDataCard({
       palette: 1,
-      name: '',
-      job: '',
-      phone: '',
-      email: '',
-      linkedin: '',
-      github: '',
-      photo: '',
+      name: "",
+      job: "",
+      phone: "",
+      email: "",
+      linkedin: "",
+      github: "",
+      photo: "",
     });
   };
 
@@ -83,7 +89,6 @@ function App() {
     });
   };
 
-
   return (
     <div>
       <header className='header'>
@@ -92,11 +97,11 @@ function App() {
         </a>
       </header>
       <Card
-      dataCard={dataCard}
-      handleInput={handleInput} 
-      handleClickCreateCard={handleClickCreateCard}
-      apiData={apiData}
-      handleResetButton={handleResetButton}
+        dataCard={dataCard}
+        handleInput={handleInput}
+        handleClickCreateCard={handleClickCreateCard}
+        apiData={apiData}
+        handleResetButton={handleResetButton}
       />
 
       <footer className='footer'>

@@ -1,3 +1,5 @@
+import GetAvatar from "./ImageComponent/GetAvatar";
+
 function Complete(props) {
   const handleLegend = (ev) => {
     props.handleLegendClick({
@@ -75,21 +77,8 @@ function Complete(props) {
 
         {/* <!-- PARTE AÑADIR IMAGEN / EN FUTURO USAR LIBRERÍA--> */}
 
-        <div className='complete__photo'>
-          <label className='complete__photo__label' htmlFor='photo'>
-            Añadir imagen
-          </label>
-          <input
-            className='js__profile-upload-btn hidden'
-            type='file'
-            name='photo'
-            value={props.dataCard.photo}
-            id='photo'
-            required
-          />
-          {/* <!-- add_image_btn , antes tenía este id--> */}
-          <div className='complete__photo__square js__profile-preview profile__preview'></div>
-        </div>
+        <GetAvatar avatar={avatar} updateAvatar={updateAvatar} />
+
         {/* <!--------------FIN AÑADIR IMAGEN------------> */}
         <div className='div__complete email js__inputs'>
           <label className='complete__label' htmlFor='email'>
