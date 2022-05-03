@@ -1,4 +1,5 @@
-import GetAvatar from "./ImageComponent/GetAvatar";
+// IMPORTS PARA AÑADIR IMAGEN
+import GetAvatar from './GetAvatar';
 
 function Complete(props) {
   const handleLegend = (ev) => {
@@ -75,11 +76,12 @@ function Complete(props) {
           Imagen de perfil
         </label>
 
-        {/* <!-- PARTE AÑADIR IMAGEN / EN FUTURO USAR LIBRERÍA--> */}
+        {/* COMPONENTE PARA AÑADIR IMAGEN Y EL DIV CHIQUITITO QUE LA CONTIENE */}
 
-        <GetAvatar avatar={avatar} updateAvatar={updateAvatar} />
+        <GetAvatar avatar={props.avatar} updateAvatar={props.updateAvatar} />
 
         {/* <!--------------FIN AÑADIR IMAGEN------------> */}
+
         <div className='div__complete email js__inputs'>
           <label className='complete__label' htmlFor='email'>
             Email
