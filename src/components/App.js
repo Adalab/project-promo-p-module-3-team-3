@@ -1,16 +1,12 @@
-import "../styles/main.scss";
-import logoAwesome from "../images/logo-awesome.svg";
-import logoAdalab from "../images/logo-adalab.png";
-import { useState } from "react";
-import dataApi from "../services/fetch";
-import Card from "./card/Card";
-import React from 'react';
-
+import '../styles/main.scss';
+import { useState } from 'react';
+import dataApi from '../services/fetch';
+import Card from './card/Card';
+import Header from './card/Header';
+import Footer from './Footer';
 
 function App() {
-  const [apiData, setApiData] = useState({});
-  const [avatar, setAvatar] = useState('');
- 
+  const [apiData, setApiData] = useState({}); 
 
   const [dataCard, setDataCard] = useState({
     palette: 1,
@@ -23,8 +19,8 @@ function App() {
     photo: "",
   });
 
-  const updateAvatar = (avatar) => {
-    setAvatar(avatar);
+  // ESTADO PARA AÑADIR IMAGEN
+  const [avatar, setAvatar] = useState('');
 
   // función actualizar valores de los inputs
   const handleInput = (data) => {
@@ -89,27 +85,33 @@ function App() {
     });
   };
 
+  // FUNCIÓN PARA AÑADIR IMAGEN A EL ESTADO
+  const updateAvatar = (avatar) => {
+    setAvatar(avatar);
+    setDataCard({
+      ...dataCard,
+      photo: avatar,
+    });
+  };
+
+
   return (
     <div>
-      <header className='header'>
-        <a href='./index.html'>
-          <img className='header__img' src={logoAwesome} alt='Logo' />
-        </a>
-      </header>
+
+      <Header />
+
       <Card
         dataCard={dataCard}
-        handleInput={handleInput}
+        handleInput={handleInput} 
         handleClickCreateCard={handleClickCreateCard}
         apiData={apiData}
         handleResetButton={handleResetButton}
+        avatar={avatar}
+        updateAvatar={updateAvatar}
       />
 
-      <footer className='footer'>
-        <p className='footer__paragraph footer-paragraph'>Sine Nomine © 2022</p>
-        <a href='https://adalab.es' target='_blank'>
-          <img className='footer__img' src={logoAdalab} alt='Logo Adalab' />
-        </a>
-      </footer>
+      <Footer />
+
     </div>
   );
 }

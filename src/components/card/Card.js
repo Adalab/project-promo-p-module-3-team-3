@@ -4,6 +4,11 @@ import Design from './Design';
 import Share from './Share';
 import { useState } from 'react';
 
+// IMPORTS PARA AÑADIR IMAGEN
+import React from 'react';
+// fin de imports para añadir imagen
+
+
 function Card(props) {
   const [collapsedClassD, setCollapsedClassD] = useState('');
   const [collapsedClassC, setCollapsedClassC] = useState('collapsed');
@@ -13,12 +18,12 @@ function Card(props) {
   const [arrowC, setArrowC] = useState('toggle_arrow');
   const [arrowS, setArrowS] = useState('toggle_arrow');
 
+
   // colapsar las secciones
   const handleLegendClick = (data) => {
     const legendID = data.legendID;
 
     if (legendID === 'designLegend') {
-      console.log('soy la primera igualdad y me cumplo');
       setCollapsedClassD('');
       setCollapsedClassC('collapsed');
       setCollapsedClassS('collapsed');
@@ -30,7 +35,6 @@ function Card(props) {
         setArrowD('toggle_arrow');
       }
     } else if (legendID === 'completeLegend') {
-      console.log('soy la segunda igualdad y me cumplo');
       setCollapsedClassD('collapsed');
       setCollapsedClassC('');
       setCollapsedClassS('collapsed');
@@ -42,7 +46,6 @@ function Card(props) {
         setArrowC('toggle_arrow');
       }
     } else if (legendID === 'shareLegend') {
-      console.log('soy la tercera igualdad y me cumplo');
       setCollapsedClassD('collapsed');
       setCollapsedClassC('collapsed');
       setCollapsedClassS('');
@@ -56,11 +59,14 @@ function Card(props) {
     }
   };
 
+
   return (
     <main className='main-create'>
       <CardPreview 
       dataCard={props.dataCard} 
       handleResetButton={props.handleResetButton}
+      // PROPS PARA AÑADIR IMAGEN CON 'Profile'
+      avatar={props.avatar} 
       />
 
       <form className='wrapper js__form' action='' method='post'>
@@ -77,6 +83,9 @@ function Card(props) {
           handleLegendClick={handleLegendClick}
           collapsedClassC={collapsedClassC}
           arrowC={arrowC}
+          // PROPS PARA AÑADIR IMAGEN CON 'GetAvatar'
+          avatar={props.avatar} 
+          updateAvatar={props.updateAvatar}
         />
         <Share
           dataCard={props.datacard}
