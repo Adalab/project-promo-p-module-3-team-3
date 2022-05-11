@@ -1,11 +1,63 @@
 // IMPORTS PARA AÑADIR IMAGEN
 import GetAvatar from './GetAvatar';
+import { useState } from 'react';
 
 function Complete(props) {
+  let rexWord = /^[-a-zA-ZÀ-ÿñÑ]{2,}$/;
+  let rexEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+  const [nameWarning, setNameWarning] = useState('');
+  const [nameClass, setNameClass] = useState('');
+
+  const [jobWarning, setJobWarning] = useState('');
+  const [jobClass, setJobClass] = useState('');
+
+  const [emailWarning, setemailWarning] = useState('');
+  const [emailClass, setemailClass] = useState('');
+
   const handleLegend = (ev) => {
     props.handleLegendClick({
       legendID: ev.currentTarget.id,
     });
+  };
+
+  const validationForm = (ev) => {
+    console.log(ev.currentTarget.id);
+
+    if (ev.currentTarget.id === 'name') {
+      if (ev.currentTarget.value < 1 || !rexWord.test(ev.currentTarget.value)) {
+        setNameWarning('Por favor ingresa un nombre valido');
+        setNameClass('wrong');
+        console.log('sucedo');
+      } else {
+        setNameWarning('');
+        setNameClass('');
+      }
+    }
+    if (ev.currentTarget.id === 'job') {
+      if (ev.currentTarget.value < 1 || !rexWord.test(ev.currentTarget.value)) {
+        setJobWarning('Por favor ingresa un puesto valido');
+        setJobClass('wrong');
+        console.log('sucedo');
+      } else {
+        setJobWarning('');
+        setJobClass('');
+      }
+    }
+
+    if (ev.currentTarget.id === 'email') {
+      if (
+        ev.currentTarget.value < 1 ||
+        !rexEmail.test(ev.currentTarget.value)
+      ) {
+        setemailWarning('Por favor ingresa un email valido');
+        setemailClass('wrong');
+        console.log('sucedo');
+      } else {
+        setemailWarning('');
+        setemailClass('');
+      }
+    }
   };
 
   const handleChangeInput = (ev) => {
@@ -45,7 +97,7 @@ function Complete(props) {
             Nombre completo
           </label>
           <input
-            className='complete__input js_name_input'
+            className={`complete__input js_name_input ${nameClass}`}
             type='text'
             id='name'
             name='name'
@@ -53,15 +105,16 @@ function Complete(props) {
             placeholder='Ej: Sally Jill'
             required
             onChange={handleChangeInput}
+            onFocus={validationForm}
           />
-          <p className='error__message'></p>
+          <p className='error__message'>{nameWarning}</p>
         </div>
         <div className='div__complete job js__inputs'>
           <label className='complete__label' htmlFor='job'>
             Puesto
           </label>
           <input
-            className='complete__input js_ocupation_input'
+            className={`complete__input js_ocupation_input ${jobClass}`}
             type='text'
             id='job'
             name='job'
@@ -69,8 +122,9 @@ function Complete(props) {
             placeholder='Ej: Front-end unicorn'
             required
             onChange={handleChangeInput}
+            onBlur={validationForm}
           />
-          <p className='error__message'></p>
+          <p className='error__message'>{jobWarning}</p>
         </div>
         <label className='complete__label' htmlFor='photo'>
           Imagen de perfil
@@ -87,7 +141,7 @@ function Complete(props) {
             Email
           </label>
           <input
-            className='complete__input js_input_email'
+            className={`complete__input js_input_email ${emailClass}`}
             type='email'
             id='email'
             name='email'
@@ -95,8 +149,9 @@ function Complete(props) {
             placeholder='Ej: sally-hill@gmail.com'
             required
             onChange={handleChangeInput}
+            onBlur={validationForm}
           />
-          <p className='error__message'></p>
+          <p className='error__message'>{emailWarning}</p>
         </div>
         <div className='div__complete phone js__inputs'>
           <label className='complete__label' htmlFor='phone'>
