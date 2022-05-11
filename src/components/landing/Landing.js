@@ -6,9 +6,9 @@ function Landing() {
   return (
     <>
       <section className='main-landing'>
-        <a href='./create.html'>
+        <Link to='/create-card'>
           <img className='main-landing__img' src={Logo} alt='Logo' />
-        </a>
+        </Link>
         <h1 className='main-landing__title landing-h1'>
           Crea tu tarjeta de visita
         </h1>
