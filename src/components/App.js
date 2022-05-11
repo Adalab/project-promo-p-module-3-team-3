@@ -69,6 +69,7 @@ function App() {
 
   // función reset
   const handleResetButton = () => {
+    setAvatar("");
     setDataCard({
       palette: 1,
       name: "",
@@ -79,6 +80,7 @@ function App() {
       github: "",
       photo: "",
     });
+    // window.location.reload();
   };
 
   const handleClickCreateCard = () => {
@@ -87,7 +89,7 @@ function App() {
     });
   };
 
-  // FUNCIÓN PARA AÑADIR IMAGEN A EL ESTADO
+  // FUNCIÓN PARA AÑADIR IMAGEN AL ESTADO
   const updateAvatar = (avatar) => {
     setAvatar(avatar);
     setDataCard({

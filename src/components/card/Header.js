@@ -1,13 +1,14 @@
-import logoAwesome from '../../images/logo-awesome.svg';
+import Logo from "../../images/logo-awesome.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className='header'>
-      <a href='./index.html'>
-        <img className='header__img' src={logoAwesome} alt='Logo' />
-      </a>
+      <Link to='/'>
+        <img className='header__img' src={Logo} alt='Logo' />
+      </Link>
     </header>
   );
-}
+};
 
 export default Header;
