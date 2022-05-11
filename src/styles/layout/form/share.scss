@@ -99,22 +99,19 @@
     text-align: center;
   }
 
-  &__button--in {
+  &__twitter {
     width: 181rem;
     height: 30rem;
-    margin: 0 0 30rem 0m;
     border-radius: 3rem;
     background-color: $col_azure;
-    font-family: $font_open;
-    font-size: 14rem;
-    color: $col_white_four;
     display: flex;
-    gap: 10rem;
     align-items: center;
     justify-content: center;
 
-    &:hover {
-      cursor: pointer;
+    &__link {
+      font-family: $font_open;
+      font-size: 14rem;
+      color: $col_white_four;
     }
   }
 

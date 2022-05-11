@@ -12,13 +12,6 @@ function Share(props) {
   };
 
 
-  /* function shareOnTwitter(event) {
-    event.preventDefault();
-    let url = `https://twitter.com/intent/tweet?text=He%20creado%20una%20tarjeta%20profesional.%20¡Conóceme!%20&url=${urlTwitter.href}`;
-    window.location.href = url;
-  } */
-
-
   return (
     <fieldset className='share'>
       <legend
@@ -55,10 +48,12 @@ function Share(props) {
           <p>{props.apiData.success === false ? props.apiData.error : ''}</p>
           <button
             type='button'
-            className='share__button--in js_shareButtonTwitter'
+            className='share__twitter js_shareButtonTwitter'
           >
-            <i className='fa-brands fa-twitter share__twi'></i>Compartir en
-            twitter
+            <a href={`https://twitter.com/intent/tweet?text=He%20creado%20una%20tarjeta%20profesional.%20¡Conóceme!%20&url=${props.apiData.cardURL}`} className="share__twitter__link">
+              <i className='fa-brands fa-twitter share__twi'></i> Compartir en
+              twitter
+            </a>
           </button>
         </div>
       </div>
