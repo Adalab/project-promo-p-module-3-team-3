@@ -42,7 +42,7 @@
   }
 
   &__button {
-    margin: 10rem 0 30rem 10rem;
+    margin: 10rem auto 25rem;
     width: 199rem;
     height: 50rem;
     color: $col_white_four;
@@ -54,6 +54,7 @@
     border-color: $col_white;
     background-color: $col_dull_orange;
     box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.32);
+    display: block;
 
     &:hover {
       cursor: pointer;
@@ -94,14 +95,14 @@
     font-family: $font_open;
     font-weight: $font_w_semibold;
     font-size: 12rem;
-    margin-bottom: 12rem;
+    margin: 15rem;
     text-align: center;
   }
 
   &__button--in {
     width: 181rem;
     height: 30rem;
-    margin: 0 0 30rem 20rem;
+    margin: 0 0 30rem 0m;
     border-radius: 3rem;
     background-color: $col_azure;
     font-family: $font_open;
