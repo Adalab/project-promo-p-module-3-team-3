@@ -5,6 +5,7 @@ import { useState } from 'react';
 function Complete(props) {
   let rexWord = /^[-a-zA-ZÀ-ÿñÑ]{2,}$/;
   let rexEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  let rexNum = /^[0-9]{9,}$/
 
   const [nameWarning, setNameWarning] = useState('');
   const [nameClass, setNameClass] = useState('');
@@ -14,6 +15,10 @@ function Complete(props) {
 
   const [emailWarning, setemailWarning] = useState('');
   const [emailClass, setemailClass] = useState('');
+
+  const [phoneWarning, setphoneWarning] = useState('');
+  const [phoneClass, setphoneClass] = useState('');
+
 
   const handleLegend = (ev) => {
     props.handleLegendClick({
@@ -56,6 +61,19 @@ function Complete(props) {
       } else {
         setemailWarning('');
         setemailClass('');
+      }
+    }
+
+    if (ev.currentTarget.id === 'phone') {
+      if (
+        ev.currentTarget.value < 1 ||
+        !rexNum.test(ev.currentTarget.value)
+      ) {
+        setphoneWarning('Por favor ingresa un teléfono valido');
+        setphoneClass('wrong');
+      } else {
+        setphoneWarning('');
+        setphoneClass('');
       }
     }
   };
@@ -105,7 +123,7 @@ function Complete(props) {
             placeholder='Ej: Sally Jill'
             required
             onChange={handleChangeInput}
-            onFocus={validationForm}
+            onBlur={validationForm}
           />
           <p className='error__message'>{nameWarning}</p>
         </div>
@@ -158,16 +176,17 @@ function Complete(props) {
             Teléfono
           </label>
           <input
-            className='complete__input js_input_phone'
+            className={`complete__input js_input_phone ${phoneClass}`}
             type='tel'
             id='phone'
             name='phone'
             value={props.dataCard.phone}
-            placeholder='Ej: 555-55-55-55'
+            placeholder='Ej: 689555555'
             required
             onChange={handleChangeInput}
+            onBlur={validationForm}
           />
-          <p className='error__message'></p>
+          <p className='error__message'>{phoneWarning}</p>
         </div>
         <div className='div__complete linkedin js__inputs'>
           <label className='complete__label' htmlFor='linkedin'>
