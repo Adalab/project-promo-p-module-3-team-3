@@ -1,12 +1,14 @@
-import '../styles/main.scss';
-import { useState } from 'react';
-import dataApi from '../services/fetch';
-import Card from './card/Card';
-import Header from './card/Header';
-import Footer from './Footer';
+import "../styles/main.scss";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import dataApi from "../services/fetch";
+import Card from "./card/Card";
+import Header from "./card/Header";
+import Footer from "./Footer";
+import Landing from "./landing/Landing";
 
 function App() {
-  const [apiData, setApiData] = useState({}); 
+  const [apiData, setApiData] = useState({});
 
   const [dataCard, setDataCard] = useState({
     palette: 1,
@@ -20,7 +22,7 @@ function App() {
   });
 
   // ESTADO PARA AÑADIR IMAGEN
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState("");
 
   // función actualizar valores de los inputs
   const handleInput = (data) => {
@@ -94,24 +96,32 @@ function App() {
     });
   };
 
-
   return (
     <div>
+      <Routes>
+        <Route path='/' element={<Landing />} />
 
-      <Header />
+        <Route
+          path='/create-card'
+          element={
+            <>
+              <Header />
 
-      <Card
-        dataCard={dataCard}
-        handleInput={handleInput} 
-        handleClickCreateCard={handleClickCreateCard}
-        apiData={apiData}
-        handleResetButton={handleResetButton}
-        avatar={avatar}
-        updateAvatar={updateAvatar}
-      />
+              <Card
+                dataCard={dataCard}
+                handleInput={handleInput}
+                handleClickCreateCard={handleClickCreateCard}
+                apiData={apiData}
+                handleResetButton={handleResetButton}
+                avatar={avatar}
+                updateAvatar={updateAvatar}
+              />
 
-      <Footer />
-
+              <Footer />
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }
