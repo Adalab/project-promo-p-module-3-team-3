@@ -23,7 +23,7 @@ function App() {
   }));
 
   // ESTADO PARA AÑADIR IMAGEN
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState(ls.get('dataPhoto', ""));
 
 
   // función actualizar valores de los inputs
@@ -105,6 +105,11 @@ function App() {
       photo: avatar,
     });
   };
+
+  // useEffect para guardar la foto
+  useEffect(() => {
+    ls.set('dataPhoto', avatar);
+  }, [avatar]);
 
   return (
     <div>
