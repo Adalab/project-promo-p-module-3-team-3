@@ -88,7 +88,6 @@ function App() {
       github: "",
       photo: "",
     });
-    // window.location.reload();
   };
 
   const handleClickCreateCard = () => {
