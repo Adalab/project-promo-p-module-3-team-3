@@ -1,16 +1,14 @@
 function Share(props) {
-  const handleClick=(ev)=>{
+  const handleClick = (ev) => {
     ev.preventDefault();
     props.handleClickCreateCard();
   };
-
 
   const handleLegend = (ev) => {
     props.handleLegendClick({
       legendID: ev.currentTarget.id,
     });
   };
-
 
   return (
     <fieldset className='share'>
@@ -38,19 +36,25 @@ function Share(props) {
         </button>
 
         <div className='share__div--title'>
-
           {/* <!-- Aquí va la url creada --> */}
-          <a target='blank' className='share__link js_url' href={props.apiData.cardURL}>
-
-            {props.apiData.success ? props.apiData.cardURL : ''}
-
+          <a
+            target='blank'
+            className='share__link js_url'
+            href={props.apiData.cardURL}
+          >
+            {props.apiData.success ? props.apiData.cardURL : ""}
           </a>
-          <p>{props.apiData.success === false ? props.apiData.error : ''}</p>
+          <p>{props.apiData.success === false ? props.apiData.error : ""}</p>
           <button
             type='button'
             className='share__twitter js_shareButtonTwitter'
           >
-            <a href={`https://twitter.com/intent/tweet?text=He%20creado%20una%20tarjeta%20profesional.%20¡Conóceme!%20&url=${props.apiData.cardURL}`} className="share__twitter__link">
+            <a
+              target='_blank'
+              rel='noreferrer'
+              href={`https://twitter.com/intent/tweet?text=He%20creado%20una%20tarjeta%20profesional.%20¡Conóceme!%20&url=${props.apiData.cardURL}`}
+              className='share__twitter__link'
+            >
               <i className='fa-brands fa-twitter share__twi'></i> Compartir en
               twitter
             </a>

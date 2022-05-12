@@ -52,9 +52,18 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 1}
             />
-            <label className='design__colour design__colour--1' for="firstColour"></label>
-            <label className='design__colour design__colour--2' for="firstColour"></label>
-            <label className='design__colour design__colour--3' for="firstColour"></label>
+            <label
+              className='design__colour design__colour--1'
+              htmlFor='firstColour'
+            ></label>
+            <label
+              className='design__colour design__colour--2'
+              htmlFor='firstColour'
+            ></label>
+            <label
+              className='design__colour design__colour--3'
+              htmlFor='firstColour'
+            ></label>
           </div>
 
           {/* <!--Option 2--> */}
@@ -69,9 +78,18 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 2}
             />
-            <label className='design__colour design__colour--4' for="secondColour"></label>
-            <label className='design__colour design__colour--5' for="secondColour"></label>
-            <label className='design__colour design__colour--6' for="secondColour"></label>
+            <label
+              className='design__colour design__colour--4'
+              htmlFor='secondColour'
+            ></label>
+            <label
+              className='design__colour design__colour--5'
+              htmlFor='secondColour'
+            ></label>
+            <label
+              className='design__colour design__colour--6'
+              htmlFor='secondColour'
+            ></label>
           </div>
 
           {/* <!--Option 3--> */}
@@ -86,9 +104,18 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 3}
             />
-            <label className='design__colour design__colour--7' for="thirdColour"></label>
-            <label className='design__colour design__colour--8' for="thirdColour"></label>
-            <label className='design__colour design__colour--9' for="thirdColour"></label>
+            <label
+              className='design__colour design__colour--7'
+              htmlFor='thirdColour'
+            ></label>
+            <label
+              className='design__colour design__colour--8'
+              htmlFor='thirdColour'
+            ></label>
+            <label
+              className='design__colour design__colour--9'
+              htmlFor='thirdColour'
+            ></label>
           </div>
         </div>
       </div>
