@@ -52,9 +52,9 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 1}
             />
-            <div className='design__colour design__colour--1'></div>
-            <div className='design__colour design__colour--2'></div>
-            <div className='design__colour design__colour--3'></div>
+            <label className='design__colour design__colour--1' for="firstColour"></label>
+            <label className='design__colour design__colour--2' for="firstColour"></label>
+            <label className='design__colour design__colour--3' for="firstColour"></label>
           </div>
 
           {/* <!--Option 2--> */}
@@ -69,9 +69,9 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 2}
             />
-            <div className='design__colour design__colour--4'></div>
-            <div className='design__colour design__colour--5'></div>
-            <div className='design__colour design__colour--6'></div>
+            <label className='design__colour design__colour--4' for="secondColour"></label>
+            <label className='design__colour design__colour--5' for="secondColour"></label>
+            <label className='design__colour design__colour--6' for="secondColour"></label>
           </div>
 
           {/* <!--Option 3--> */}
@@ -86,9 +86,9 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 3}
             />
-            <div className='design__colour design__colour--7'></div>
-            <div className='design__colour design__colour--8'></div>
-            <div className='design__colour design__colour--9'></div>
+            <label className='design__colour design__colour--7' for="thirdColour"></label>
+            <label className='design__colour design__colour--8' for="thirdColour"></label>
+            <label className='design__colour design__colour--9' for="thirdColour"></label>
           </div>
         </div>
       </div>

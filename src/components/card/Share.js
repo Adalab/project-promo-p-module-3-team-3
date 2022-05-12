@@ -10,6 +10,8 @@ function Share(props) {
       legendID: ev.currentTarget.id,
     });
   };
+
+
   return (
     <fieldset className='share'>
       <legend
@@ -36,8 +38,7 @@ function Share(props) {
         </button>
 
         <div className='share__div--title'>
-          {/* <!-- En este h3, sale la frase de creada tarjeta o error --> */}
-          <h3 className='js_share__title--done share__title--done'></h3>
+
           {/* <!-- Aquí va la url creada --> */}
           <a target='blank' className='share__link js_url' href={props.apiData.cardURL}>
 
@@ -47,10 +48,12 @@ function Share(props) {
           <p>{props.apiData.success === false ? props.apiData.error : ''}</p>
           <button
             type='button'
-            className='share__button--in js_shareButtonTwitter'
+            className='share__twitter js_shareButtonTwitter'
           >
-            <i className='fa-brands fa-twitter share__twi'></i>Compartir en
-            twitter
+            <a href={`https://twitter.com/intent/tweet?text=He%20creado%20una%20tarjeta%20profesional.%20¡Conóceme!%20&url=${props.apiData.cardURL}`} className="share__twitter__link">
+              <i className='fa-brands fa-twitter share__twi'></i> Compartir en
+              twitter
+            </a>
           </button>
         </div>
       </div>
