@@ -52,9 +52,18 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 1}
             />
-            <div className='design__colour design__colour--1'></div>
-            <div className='design__colour design__colour--2'></div>
-            <div className='design__colour design__colour--3'></div>
+            <label
+              className='design__colour design__colour--1'
+              htmlFor='firstColour'
+            ></label>
+            <label
+              className='design__colour design__colour--2'
+              htmlFor='firstColour'
+            ></label>
+            <label
+              className='design__colour design__colour--3'
+              htmlFor='firstColour'
+            ></label>
           </div>
 
           {/* <!--Option 2--> */}
@@ -69,9 +78,18 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 2}
             />
-            <div className='design__colour design__colour--4'></div>
-            <div className='design__colour design__colour--5'></div>
-            <div className='design__colour design__colour--6'></div>
+            <label
+              className='design__colour design__colour--4'
+              htmlFor='secondColour'
+            ></label>
+            <label
+              className='design__colour design__colour--5'
+              htmlFor='secondColour'
+            ></label>
+            <label
+              className='design__colour design__colour--6'
+              htmlFor='secondColour'
+            ></label>
           </div>
 
           {/* <!--Option 3--> */}
@@ -86,9 +104,18 @@ function Design(props) {
               onChange={handleChangeInput}
               checked={props.dataCard.palette === 3}
             />
-            <div className='design__colour design__colour--7'></div>
-            <div className='design__colour design__colour--8'></div>
-            <div className='design__colour design__colour--9'></div>
+            <label
+              className='design__colour design__colour--7'
+              htmlFor='thirdColour'
+            ></label>
+            <label
+              className='design__colour design__colour--8'
+              htmlFor='thirdColour'
+            ></label>
+            <label
+              className='design__colour design__colour--9'
+              htmlFor='thirdColour'
+            ></label>
           </div>
         </div>
       </div>
