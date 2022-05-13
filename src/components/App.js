@@ -6,25 +6,26 @@ import Card from "./card/Card";
 import Header from "./card/Header";
 import Footer from "./Footer";
 import Landing from "./landing/Landing";
-import ls from '../services/localStorage';
+import ls from "../services/localStorage";
 
 function App() {
   const [apiData, setApiData] = useState({});
 
-  const [dataCard, setDataCard] = useState(ls.get('dataCard', {
-    palette: 1,
-    name: "",
-    job: "",
-    phone: "",
-    email: "",
-    linkedin: "",
-    github: "",
-    photo: "",
-  }));
+  const [dataCard, setDataCard] = useState(
+    ls.get("dataCard", {
+      palette: 1,
+      name: "",
+      job: "",
+      phone: "",
+      email: "",
+      linkedin: "",
+      github: "",
+      photo: "",
+    })
+  );
 
   // ESTADO PARA AÑADIR IMAGEN
-  const [avatar, setAvatar] = useState(ls.get('dataPhoto', ""));
-
+  const [avatar, setAvatar] = useState(ls.get("dataPhoto", ""));
 
   // función actualizar valores de los inputs
   const handleInput = (data) => {
@@ -71,9 +72,8 @@ function App() {
 
   // useEffect para guardar los datos del objeto 'dataCard' cada vez que se actualice la variable de estado
   useEffect(() => {
-    ls.set('dataCard', dataCard);
+    ls.set("dataCard", dataCard);
   }, [dataCard]);
-
 
   // función reset
   const handleResetButton = () => {
@@ -88,6 +88,8 @@ function App() {
       github: "",
       photo: "",
     });
+    setApiData({});
+    ls.clear();
   };
 
   const handleClickCreateCard = () => {
@@ -107,7 +109,7 @@ function App() {
 
   // useEffect para guardar la foto
   useEffect(() => {
-    ls.set('dataPhoto', avatar);
+    ls.set("dataPhoto", avatar);
   }, [avatar]);
 
   return (
