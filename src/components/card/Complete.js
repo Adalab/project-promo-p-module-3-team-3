@@ -3,9 +3,10 @@ import GetAvatar from './GetAvatar';
 import { useState } from 'react';
 
 function Complete(props) {
-  let rexWord = /^[-a-zA-ZÀ-ÿñÑ]{2,}$/;
+  let rexName = /^[ÁÉÍÓÚA-Z][a-záéíóú]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú-]+)*$/;
+  let rexJob = /^[a-zA-Z0-9._-]+(\s+[ÁÉÍÓÚA-Z]?[a-záéíóú-]+)*$/;
   let rexEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-  let rexNum = /^[0-9]{9,}$/
+  let rexNum = /^[0-9+]{9,}$/;
 
   const [nameWarning, setNameWarning] = useState('');
   const [nameClass, setNameClass] = useState('');
@@ -19,6 +20,11 @@ function Complete(props) {
   const [phoneWarning, setphoneWarning] = useState('');
   const [phoneClass, setphoneClass] = useState('');
 
+  const [linkedinWarning, setlinkedinWarning] = useState('');
+  const [linkedinClass, setlinkedinClass] = useState('');
+
+  const [githubWarning, setgithubWarning] = useState('');
+  const [githubClass, setgithubClass] = useState('');
 
   const handleLegend = (ev) => {
     props.handleLegendClick({
@@ -30,7 +36,7 @@ function Complete(props) {
     console.log(ev.currentTarget.id);
 
     if (ev.currentTarget.id === 'name') {
-      if (ev.currentTarget.value < 1 || !rexWord.test(ev.currentTarget.value)) {
+      if (ev.currentTarget.value < 1 || !rexName.test(ev.currentTarget.value)) {
         setNameWarning('Por favor ingresa un nombre valido');
         setNameClass('wrong');
         console.log('sucedo');
@@ -40,7 +46,7 @@ function Complete(props) {
       }
     }
     if (ev.currentTarget.id === 'job') {
-      if (ev.currentTarget.value < 1 || !rexWord.test(ev.currentTarget.value)) {
+      if (ev.currentTarget.value < 1 || !rexJob.test(ev.currentTarget.value)) {
         setJobWarning('Por favor ingresa un puesto valido');
         setJobClass('wrong');
         console.log('sucedo');
@@ -65,15 +71,32 @@ function Complete(props) {
     }
 
     if (ev.currentTarget.id === 'phone') {
-      if (
-        ev.currentTarget.value < 1 ||
-        !rexNum.test(ev.currentTarget.value)
-      ) {
+      if (ev.currentTarget.value < 1 || !rexNum.test(ev.currentTarget.value)) {
         setphoneWarning('Por favor ingresa un teléfono valido');
         setphoneClass('wrong');
       } else {
         setphoneWarning('');
         setphoneClass('');
+      }
+    }
+
+    if (ev.currentTarget.id === 'linkedin') {
+      if (ev.currentTarget.value < 1 || !rexJob.test(ev.currentTarget.value)) {
+        setlinkedinWarning('Por favor ingresa un user valido');
+        setlinkedinClass('wrong');
+      } else {
+        setlinkedinWarning('');
+        setlinkedinClass('');
+      }
+    }
+
+    if (ev.currentTarget.id === 'github') {
+      if (ev.currentTarget.value < 1 || !rexJob.test(ev.currentTarget.value)) {
+        setgithubWarning('Por favor ingresa un user valido');
+        setgithubClass('wrong');
+      } else {
+        setgithubWarning('');
+        setgithubClass('');
       }
     }
   };
@@ -193,7 +216,7 @@ function Complete(props) {
             Linkedin
           </label>
           <input
-            className='complete__input js_input_linkedin'
+            className={`complete__input js_input_linkedin ${linkedinClass}`}
             type='text'
             id='linkedin'
             name='linkedin'
@@ -201,15 +224,16 @@ function Complete(props) {
             placeholder='Ej: sally-hill'
             required
             onChange={handleChangeInput}
+            onBlur={validationForm}
           />
-          <p className='error__message'></p>
+          <p className='error__message'>{linkedinWarning}</p>
         </div>
         <div className='div__complete github js__inputs'>
           <label className='complete__label' htmlFor='github'>
             Github
           </label>
           <input
-            className='complete__input js_input_github'
+            className={`complete__input js_input_github ${githubClass}`}
             type='text'
             id='github'
             name='github'
@@ -217,8 +241,9 @@ function Complete(props) {
             placeholder='Ej: sally-hill'
             required
             onChange={handleChangeInput}
+            onBlur={validationForm}
           />
-          <p className='error__message'></p>
+          <p className='error__message'>{githubWarning}</p>
         </div>
       </div>
     </fieldset>
